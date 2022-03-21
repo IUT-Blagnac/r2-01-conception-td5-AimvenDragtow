@@ -1,0 +1,27 @@
+@startuml Diagramme Classe
+
+
+class Artisan {
+    +int salaireHoraire
+    +String coordonnées
+    +String adr
+}
+
+class Chantier {
+    +Date dateDeDebut
+    +Date dateDeFin
+    +String adr
+    void affecterArtisan()
+}
+
+class Affectation {
+    -Date dateDebutMission
+    -Date dateFinMission
+    -String nombreHeuresEffectuees
+    int calcPaye()
+}
+
+Artisan "1..*" -- "0..1" Chantier
+(Artisan, Chantier) .. Affectation
+
+@enduml

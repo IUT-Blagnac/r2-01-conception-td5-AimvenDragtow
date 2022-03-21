@@ -1,0 +1,43 @@
+@startuml Use Case
+
+
+actor "L'entreprise / Manager" as evilBoss
+
+package "Interface application" {
+    usecase 1 as "Affecter un artisan a un chantier"
+    usecase 2 as "Calculer la paye d’un artisan pour un chantier donné"
+
+    package "Chantiers" {
+        usecase 3 as "Ajouter un nouveau chantier"
+        usecase 4 as "Supprimer un chantier"
+    }
+
+    package "Artisans" {
+        usecase 5 as "Ajouter un nouvel artisan"
+        usecase 6 as "Supprimer un artisan"
+        usecase 7 as "Changer un salaire horaire d'un artisan"
+        usecase 8 as "Changer les coordonnées d'un artisan"
+    }
+}
+
+evilBoss --> 1
+evilBoss --> 2
+evilBoss --> 3
+evilBoss --> 4
+evilBoss --> 5
+evilBoss --> 6
+evilBoss --> 7
+evilBoss --> 8
+
+(6) .> (5) : <<include>>
+(7) .> (5) : <<include>>
+(8) .> (5) : <<include>>
+
+(4) .> (3) : <<include>>
+
+(7) .> (2) : <<include>>
+
+(1) .> (5) : <<extends>>
+(1) .> (3) : <<extends>>
+
+@enduml
